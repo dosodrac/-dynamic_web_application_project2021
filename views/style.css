@@ -2,14 +2,26 @@
 	* {
 		margin: 0;
 	}
-		
-	body {
+	
+	body{
 		margin-top: 5%;
-		background-image: url('https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-size: cover;
 	}
+	/* Different body background image for each page */
+	body#home {
+		background-image: url('https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+	}
+
+	body#about {
+		background-image: url('https://images.pexels.com/photos/4199098/pexels-photo-4199098.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+	}
+	body#register {
+		background-image:url('https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+	}
+
+	/* Navigation bar */
 
 	/* Add background color to the top navigation */
 		.topnav {
@@ -65,6 +77,8 @@
 			object-position: center;
 			position: inherit;
 		}
+
+		/* Headers */
 		.homepage_h1 {
 			color: whitesmoke;
 			text-shadow: 2px 2px 8px #000000;
@@ -78,6 +92,30 @@
 			padding-top: 12%;
 			display: table;
 		}
+
+		/* Text */
+		/* Paragraphs */
+		.abouttext{
+  			position: absolute;
+			left: 30%;
+			width: 60%;
+		}
+		/* Containers */
+		.registercontainer{
+		width: 300px;
+		clear: both;
+		height: 350px;
+		background-color:rgba(255, 255, 255, 0.85);
+		padding: 10px 20px;
+		margin: 0 auto;
+		}
+
+		.registercontainer input{
+		width: 100%;
+		clear: both;
+		}
+
+		/* Footer */
 		.footer {
 			position: fixed;
 			left: 0;

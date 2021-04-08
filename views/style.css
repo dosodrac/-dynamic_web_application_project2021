@@ -1,0 +1,92 @@
+/* CSS Document */
+	* {
+		margin: 0;
+	}
+		
+	body {
+		margin-top: 5%;
+		background-image: url('https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+
+	/* Add background color to the top navigation */
+		.topnav {
+			background-color: white;
+			overflow: auto;
+			position: fixed;
+			display: inline-block;
+			top: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: auto;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			justify-content: center;
+			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+		}
+		/* Style the links inside the navigation bar */
+		.topnav a {
+			align-content: center;
+			color: #80B151;
+			text-align: center;
+			padding: 10px;
+			text-decoration: none;
+			font-size: 18px;
+			display: inline-block;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		/* Change the color of links on hover */
+		.topnav a:hover {
+			background-color: #80B151;
+			color: white;
+			text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+		}
+		/* Add a color to the active/current link */
+		.topnav a.active {
+			background-color: #F3A944;
+			color: white;
+			height: 100%;
+		}
+		.topnav .icon {
+			display: none;
+		}
+
+		.downarrow {
+			margin-left: auto;
+			margin-right: auto;
+			margin: 0px;
+			width: 100%;
+			padding: 0;
+			text-align: center;
+			object-position: center;
+			position: inherit;
+		}
+		.homepage_h1 {
+			color: whitesmoke;
+			text-shadow: 2px 2px 8px #000000;
+			font-family: Verdana, Geneva, sans-serif;
+			font-size:5vw;
+			width: 90%;
+			height: 70%;
+			float: left;
+			text-align: left;
+			padding-left: 10%;
+			padding-top: 12%;
+			display: table;
+		}
+		.footer {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			padding: 5px;
+			background-color: #232B2B;
+			color: white;
+			text-align: center;
+			font-size: 10px;
+			box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.5);
+		}

@@ -20,6 +20,9 @@
 	body#register {
 		background-image:url('https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
 	}
+	body#login {
+		background-image:url('https://images.pexels.com/photos/1640768/pexels-photo-1640768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+	}
 
 	/* Navigation bar */
 
@@ -105,15 +108,30 @@
 		width: 300px;
 		clear: both;
 		height: 350px;
-		background-color:rgba(255, 255, 255, 0.85);
-		padding: 10px 20px;
+		background-color:rgba(255, 255, 255, 0.9);
+		padding: 5px 20px;
 		margin: 0 auto;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
-
 		.registercontainer input{
 		width: 100%;
 		clear: both;
 		}
+		
+
+		.logincontainer{
+		width: 300px;
+		clear: both;
+		height: 125px;
+/*		background-color:rgba(255, 255, 255, 0.85);*/
+		padding: 5px 10px;
+		margin: 0 auto;
+		}
+		.logincontainer input{
+		width: 100%;
+		clear: both;
+		}
+
 
 		/* Footer */
 		.footer {

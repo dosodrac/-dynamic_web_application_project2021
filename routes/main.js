@@ -25,7 +25,9 @@ module.exports = function(app)
 	app.post('/registered', [ 
 		check('username').isAlphanumeric().isLength({ min:3, max:20}).trim(),	// Validation of username input, through the use of alpha numeric characters between 3 and 20 and trimmed of white spaces
 		check('email').isEmail().normalizeEmail().trim(),	// Validation of email input, check if string is an email and canonicalizes it
-		check('password').isLength({min:8, max:20})	// Validation of password input, with the minimum lenght of 8 and maximum of 20 characters  
+		check('password').isLength({min:8, max:20}),	// Validation of password input, with the minimum lenght of 8 and maximum of 20 characters
+        check('firstname').isAlpha().isLength({max:20}),  // Validation of first name input as being only a maximum of 20 letters
+        check('lasttname').isAlpha().isLength({max:20}),  // Validation of last name input as being only a maximum of 20 letters
 	], function (req,res) {// Function that will request and resend data from registered
 		
 		const errors = validationResult(req);
@@ -106,12 +108,4 @@ module.exports = function(app)
 		res.send('You are now logged out ' + req.body.username + '.' + '<br />'+ '<br/ >' + '<a href='+'./'+'>Home</a>');      
 		})    
 	})
-
-
-
-
-
-
-    
-
 }

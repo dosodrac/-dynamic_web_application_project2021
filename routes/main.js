@@ -140,14 +140,15 @@ app.get('/login', function (req,res){
 			var db = client.db ('caloriebuddy'); 
          		db.collection('foods').insertOne({ 
          		name: req.body.name,
-                typicalValues: req.body.typicalvalues,
-                unitOfTheTypicalValue: req.body.unit,
-                calories: req.body.calories,
-                carbs: req.body.carbs,
-                fat: req.body.fat,
-                protein: req.body.protein, 
-                salt: req.body.salt,
-                sugar: req.body.sugar
+                	typicalValues: req.body.typicalvalues,
+                	unitOfTheTypicalValue: req.body.unit,
+                	calories: req.body.calories,
+                	carbs: req.body.carbs,
+                	fat: req.body.fat,
+                	protein: req.body.protein, 
+                	salt: req.body.salt,
+                	sugar: req.body.sugar,
+			username: req.session.userId
          		});
          		client.close()
                  
@@ -188,7 +189,7 @@ app.get('/login', function (req,res){
                                 }
                                 else{
                                 //if items have been found, rendering results
-                                        res.render('searchedfood.ejs', {availablebooks: results});
+                                        res.render('searchedfood.ejs', {availablefoods: results});
                                 }
                                 client.close();
                                 }
@@ -196,6 +197,47 @@ app.get('/login', function (req,res){
 
                         });
         });
+
+//R8--------UPDATE-FOOD---------------------------------------------------------------------------------------// 
+
+//R9--------LIST---------------------------------------------------------------------------------------//
+app.get('/listfood', redirectLogin, function(req, res) {
+        var MongoClient = require('mongodb').MongoClient;
+        var url = 'mongodb://localhost';
+        MongoClient.connect(url, function (err, client) {
+        	if (err) throw err;      
+        		var db = client.db('caloriebuddy');
+        		db.collection('foods').find().toArray((findErr, results) => {
+        		if (findErr) throw findErr;
+        		else 
+            			res.render('listfood.ejs', {availablefoods:results});
+        			client.close();  
+        		}); 
+      		}); 
+    	});
+
+//R10-----API---------------------------------------------------------------------------------------// 
+	app.get('/api', function (req,res) {
+		var MongoClient = require('mongodb').MongoClient;      
+		var url = 'mongodb://localhost';      
+		MongoClient.connect(url, function (err, client) {      
+			if (err) throw err
+			var db = client.db('caloriebuddy');
+			db.collection('foods').find().toArray((findErr, results) => {
+				if (findErr) 
+					throw findErr;       
+				else          
+					res.json(results);
+					client.close();
+			}); 
+		}); 
+	});
+
+
+
+
+
+
 
 
 }

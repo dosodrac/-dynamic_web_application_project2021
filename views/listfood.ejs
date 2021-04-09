@@ -3,19 +3,19 @@
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title> Searched food</title>
+	<title> List food</title>
 	<link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
 </head>
-<body id = "searchedfood">
+<body id = "listfood">
 	<div class="topnav" id="topnav">
 		<a class="hvr-bounce-to-bottom" href="./">Home</a> 
 		<a class="hvr-bounce-to-bottom" href="/about">About</a> 
 		<a class="hvr-bounce-to-bottom" href="/register">Register</a> 
 		<a class="hvr-bounce-to-bottom" href="/login">Login</a> 
 		<a class="hvr-bounce-to-bottom" href="/addfood">Add food</a> 
-		<a class="active" href="/searchfood">Search food</a> 
+		<a class="hvr-bounce-to-bottom" href="/searchfood">Search food</a> 
 		<a class="hvr-bounce-to-bottom" href="/updatefood">Update food</a> 
-		<a class="hvr-bounce-to-bottom" href="/listfood">List food</a> 
+		<a class="active" href="/listfood">List food</a> 
 		<a class="hvr-bounce-to-bottom" href="/API">API</a> 
 		<a class="hvr-bounce-to-bottom"	href="/logout">Logout</a> 
 		<a class="icon" href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
@@ -31,17 +31,19 @@
 	      } 
 	</script>
 
-<center><h1 class="searchpage_h1">Food Results Page</h1>
+<center><h1 class="listpage_h1">Food Results Page</h1>
 <br>
 <br>
 <h3>
-	Here are the details of all available foods with the searched keyword are: 		
+	The details of all available foods with the searched keyword are: 		
 	</h3> 
 </center>
 <br>
-<br>
-<table>   
-	<tr>
+<br
+<div class="listcontainer"
+
+<table>
+<tr>
                 <th><b>Name</b></th>
                 <th><b>Typical Values</b></th>
                 <th><b>Calories</b></th>
@@ -50,13 +52,13 @@
                 <th><b>Protein</b></th>
                 <th><b>Salt</b></th>
                 <th><b>Sugar</b></th>
-                
+                <th><b>Added By</b></th>
             </tr>
 
-            <% availablefoods.forEach(function(food){ %>
+            <% availablefood.forEach(function(food){ %>
             <tr>
                 <td><%= food.name %></td>
-                <td><%= food.typicalValues%> <%= food.unitOfTheTypicalValue %></td>
+                <td><%= food.typicalValues%> <%= food.unitTypicalValues %></td>
                 <td><%= food.calories %>g</td>
                 <td><%= food.carbs %>g</td>
                 <td><%= food.fat %>g</td>
@@ -67,7 +69,11 @@
             </tr>
             <%}); %>
 </table>
+</div>
+
 <br>
+	<br> 
+
 <br>
 	<div class="footer">
 		<center>

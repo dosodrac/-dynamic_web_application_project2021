@@ -199,6 +199,82 @@ app.get('/login', function (req,res){
         });
 
 //R8--------UPDATE-FOOD---------------------------------------------------------------------------------------// 
+	app.get('/updatefood', redirectLogin,function(req,res){
+                res.render("updatefood.html");
+        });
+        //result of search
+        app.get('/update-result',function (req,res){
+                //searching in the database
+                var MongoClient = require('mongodb').MongoClient;
+                
+                var url = 'mongodb://localhost';
+                        MongoClient.connect(url, function(err, client) {
+                                
+                                if(err) throw err;
+                                var db = client.db('caloriebuddy');
+                                
+                                db.collection('foods').find({name:{$regex:req.query.keyword, $options:'i'},username:req.session.userId}).toArray((findErr, results) => {
+                                if (findErr) throw findErr;
+                                else{
+                                        if (results.length==0){ 
+                                                res.send('No matches have been found, ' + '<a href=' + './searchfood' + '>try again.</a>' + '<br />' + '<br/ >' + '<a href='+'./'+'>Home</a>');
+                                }
+                                else{
+                                //if items have been found, rendering results
+                                        res.render('updatedfood.ejs', {availablefoods: results});
+                                }
+                                client.close();
+                                }
+                                });
+
+                        });
+
+        });
+
+        //update
+        app.post('/food-updated/:_id', function(req, res){
+                //searching in the database
+                var MongoClient = require('mongodb').MongoClient;
+                
+                var url = 'mongodb://localhost';
+                MongoClient.connect(url, function(err, client) {
+                        if(err) throw err;
+                        var db = client.db('caloriebuddy');
+                        var ObjectID = require('mongodb').ObjectID;
+                        if(req.body.submit == "Delete"){
+                                db.collection('foods').deleteOne({"_id": ObjectID(req.params._id)}, function(err){	// delete the selected food
+                                        if(err) throw err;
+                                        else{	// display a confirmation message that the food was removed from the database
+                                                res.send('You have sucessfully removed ' + req.body.name + '. '+'<br />' + '<br/ >' + '<a href='+'../'+'>Home</a>');
+                                                client.close();
+                                        }
+                                });
+                        }
+                        if(req.body.submit == "Update"){ 
+                                var changed = { $set: {"name": req.body.name, 
+                                                        "typicalValues": req.body.typicalvalues, 
+                                                        "unitOfTypicalValues": req.body.unit, 
+                                                        "calories": req.body.calories, 
+                                                        "carbs": req.body.carbs, 
+                                                        "fat": req.body.fat, 
+                                                        "protein": req.body.protein, 
+                                                        "salt": req.body.salt, 
+                                                        "sugar": req.body.sugar}
+                                                };
+                                db.collection('foods').updateOne({"_id": ObjectID(req.params._id)}, changed, function(err, result){	// update the selected food
+                                        if(err) throw err;
+                                        else{	// display a confirmation message that the username was removed from the database
+                                                res.send('You have sucessfully updated ' + req.body.name + '.' + '<br />' + '<br/ >' + '<a href='+'../'+'>Home</a>');
+                                                client.close();
+                                        }
+                                });
+                        }
+                });
+        });
+
+
+
+
 
 //R9--------LIST-FOOD----------------------------------------------------------------------------------------//
 	app.get('/listfood', redirectLogin, function(req, res) { 

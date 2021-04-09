@@ -13,7 +13,6 @@
 	body#home {
 		background-image: url('https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
 	}
-
 	body#about {
 		background-image: url('https://images.pexels.com/photos/4199098/pexels-photo-4199098.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
 	}
@@ -24,9 +23,14 @@
 		background-image:url('https://images.pexels.com/photos/1640768/pexels-photo-1640768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 	}
 	body#addfood {
-		background-image:url('https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+		background-image:url('https://images.pexels.com/photos/4033404/pexels-photo-4033404.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
 	}
-
+	body#searchfood{
+		background-image:url('https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+	}
+	body#searchedfood {
+		background-image:url('https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+	}
 
 	/* Navigation bar */
 
@@ -150,22 +154,36 @@
 		}
 
 		.addfoodcontainer{
-		width: 400px;
+		position: absolute; 
+		top: 225px;
+		right: 250px;
+		width: 350px;
 		clear: both;
 		height: 420px;
-		background-color:rgba(255, 255, 255, 0.8);
+		text-color: white;
+/*		background-color:rgba(255, 255, 255, 1);*/
 		padding: 5px 20px;
 		margin: 0 auto;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+/*		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 		}
 		.addfoodcontainer input{
 		/*width: 50%;*/
 		clear: both;
-		align: 
 		}
 
-
-
+		.searchfoodcontainer{
+		top: 50%;
+		width: 300px;
+		clear: both;
+		height: 125px;
+		padding: 5px 10px;
+		margin: 0 auto;
+		}
+		.searchfoodcontainer input{
+		width: 100%;
+		clear: both;
+		}		
+		
 		/* Footer */
 		.footer {
 			position: fixed;

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Search Food Page</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+</head>
+<body id = "searchfood">
+	<div class="topnav" id="topnav">
+		<a class="hvr-bounce-to-bottom" href="./">Home</a> 
+		<a class="hvr-bounce-to-bottom" href="/about">About</a> 
+		<a class="hvr-bounce-to-bottom" href="/register">Register</a> 
+		<a class="hvr-bounce-to-bottom" href="/login">Login</a> 
+		<a class="hvr-bounce-to-bottom" href="/addfood">Add food</a> 
+		<a class="active" href="/searchfood">Search food</a> 
+		<a class="hvr-bounce-to-bottom" href="/updatefood">Update food</a> 
+		<a class="hvr-bounce-to-bottom" href="/listfood">List food</a> 
+		<a class="hvr-bounce-to-bottom" href="/API">API</a> 
+		<a class="hvr-bounce-to-bottom"	href="/logout">Logout</a> 
+		<a class="icon" href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+	</div>
+	<script>
+	         function myFunction() {
+	         var x = document.getElementById("topnav");
+	         if (x.className === "topnav") {
+	             x.className += " responsive";
+	         } else {
+	             x.className = "topnav";
+	         }
+	      } 
+	</script>
+<center><h1 class="searchfoodpage_h1">Search Food Page</h1></center>
+<br>
+<br>
+
+<div class="searchfoodcontainer">	
+
+			<!--This is a from with different input fields for user interaction.Such fields will provide the data that will parse into the database-->
+<br>
+<br>
+<br>
+	<form action="search-result" method="get"> 	
+			<label>Food name</label>&nbsp; &nbsp; &nbsp; <input id="search-box" name="keyword" style="color:#808080" type="text"><br> 			
+			<br> 			
+            <br>	
+			<input style="background-color:#44c767; color:white; padding:6px 24px; text-deco ration:none; text-shadow:0px 1px 0px #2f6627;" type="submit" value="Search"></label>
+	</form>
+</div>
+<br>
+	<div class="footer">
+		<center>
+			<p>dcard001@gold.ac.uk</p>
+			<p>Created on the fateful year of 2021</p>
+		</center>
+	</div>
+</body>
+</html>

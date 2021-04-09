@@ -126,7 +126,12 @@ app.get('/login', function (req,res){
 	});
 
 	// foodadded
-	app.post('/foodadded', function (req,res) {
+	app.post('/foodadded', check('name').not().isEmpty(), function(req, res){
+		const errors = validationResult(req);
+		if(!errors.isEmpty()){
+			res.send('There cannot be empty fields, ' + '<a href='+'./addfood'+'>please try again.</a>' + '<br />'+ '<br/ >' + '<a href='+'./'+'>Home</a>');
+		} 
+		else{	
         // saving data in database
         var MongoClient = require('mongodb').MongoClient;
         var url = 'mongodb://localhost';
@@ -159,20 +164,38 @@ app.get('/login', function (req,res){
                         '<a href='+'/addfood'+'>Add more food</a>'+'<br />'+ '<br />'+
                         '<a href='+'./'+'>Home</a>');
                  });
+	}
 	});
 
+//R7--------SEARCH-FOOD---------------------------------------------------------------------------------------// 
 
+	app.get('/searchfood', redirectLogin,function(req,res){
+                res.render("searchfood.html");
+        });
+        //result of search
+        app.get('/search-result',function (req,res){
+                //searching in the database
+                var MongoClient = require('mongodb').MongoClient;
+                var url = 'mongodb://localhost';
+                        MongoClient.connect(url, function(err, client) {
+                                if(err) throw err;
+                                var db = client.db('caloriebuddy');
+                                db.collection('foods').find({name:{$regex:req.query.keyword, $options:'i'}}).toArray((findErr, results) => {
+                                if (findErr) throw findErr;
+                                else{
+                                        if (results.length==0){
+                                                res.send('No matches have been found, ' + '<a href=' + './searchfood' + '>try again.</a>' + '<br />' + '<br/ >' + '<a href='+'./'+'>Home</a>');
+                                }
+                                else{
+                                //if items have been found, rendering results
+                                        res.render('searchedfood.ejs', {availablebooks: results});
+                                }
+                                client.close();
+                                }
+                                });
 
-
-
-
-
-
-
-
-
-
-
+                        });
+        });
 
 
 }

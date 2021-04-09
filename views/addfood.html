@@ -3,16 +3,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>Register Page</title>
+	<title>Add Food Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
 </head>
-<body id = "register">
+<body id = "addfood">
 	<div class="topnav" id="topnav">
 		<a class="hvr-bounce-to-bottom" href="./">Home</a> 
 		<a class="hvr-bounce-to-bottom" href="/about">About</a> 
-		<a class="active" href="/register">Register</a> 
+		<a class="hvr-bounce-to-bottom" href="/register">Register</a> 
 		<a class="hvr-bounce-to-bottom" href="/login">Login</a> 
-		<a class="hvr-bounce-to-bottom" href="/addfood">Add food</a> 
+		<a class="active" href="/addfood">Add food</a> 
 		<a class="hvr-bounce-to-bottom" href="/searchfood">Search food</a> 
 		<a class="hvr-bounce-to-bottom" href="/updatefood">Update food</a> 
 		<a class="hvr-bounce-to-bottom" href="/listfood">List food</a> 
@@ -30,34 +30,50 @@
 	         }
 	      } 
 	</script>
-<center><h1 class="registerpage_h1"> Register Page</h1>
+<center><h1 class="addfoddpage_h1"> Add Food Page</h1>
 <br>
 </center>
 
-<div class="registercontainer">	
-<form action="/registered" method="post"> 			
+<div class="addfoodcontainer">	
+<form action="/foodadded" method="post"> 			
 			<!--This is a from with different input fields for user interaction.Such fields will provide the data that will parse into functions and therefore perfom actions like registering the user-->
 		<br>
 <center> <h3> Please fill the form</h3></center>
 <br>
-		<label for="firstname">First Name</label>
-                <input id="firstname" name="firstname" style="color:#808080" type="text">
+		<label for="name"> Name</label>
+                <input id="name" name="name" style="color:#808080" type="text">
                 <br>
                 <br>
-		<label for="lastname">Last Name</label>
-                <input id="lastname" name="lastname" style="color:#808080" type="text">
+		<label for="typicalvalues">Typical Values</label>
+                <input id="typicalvalues" name="typicalvalues" style="color:#808080" type="number">
                 <br>
                 <br>
-		<label for="email">Email</label>
-		<input id="email" name="email" style="color:#808080" type="email">
+		<label for="unit">Unit of the typical value</label>
+		<input id="unit" name="unit" style="color:#808080" type="text">
         <br>
         <br>
-        <label for="username">Username (between 3 and 20 characters)</label> 
-		<input id="username" name="username" style="color:#808080" type="text">
+        <label for="calories">Calories</label> 
+		<input id="calories" name="calories" style="color:#808080" type="number">&nbsp;Kilocalories
 		<br>
 		<br> 				
-		<label for="password">Password (between 8 and 20 characters)</label>
-		<input id="password" name="password" style="color:#808080" type="password">
+		<label for="carbs">Carbs</label>
+		<input id="carbs" name="carbs" style="color:#808080" type="number" min="0">&nbsp;g
+		<br>
+		<br>
+        <label for="fat">Fat</label>
+		<input id="fat" name="fat" style="color:#808080" type="number" min="0" size="5">&nbsp;g
+		<br>
+		<br>
+        <label for="protein">Protein</label>
+		<input id="protein" name="protein" style="color:#808080" type="number" min="0" size="5">&nbsp;g
+		<br>
+		<br>
+        <label for="salt">Salt</label>
+		<input id="salt" name="salt" style="color:#808080" type="number" min="0" size="5">&nbsp;g
+		<br>
+		<br>
+        <label for="sugar">Sugar</label>
+		<input id="sugar" name="sugar" style="color:#808080" type="number" min="0" size="5">&nbsp;g
 		<br>
 		<br>
                 <br> 				
@@ -74,3 +90,4 @@
 	</div>
 </body>
 </html>
+

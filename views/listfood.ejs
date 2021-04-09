@@ -34,14 +34,13 @@
 <center><h1 class="listpage_h1">Food Results Page</h1>
 <br>
 <br>
-<h3>
+<h3 class="listh3">
 	The details of all available foods with the searched keyword are: 		
 	</h3> 
 </center>
 <br>
-<br
+<br>
 <div class="listcontainer"
-
 <table>
 <tr>
                 <th><b>Name</b></th>
@@ -55,7 +54,7 @@
                 <th><b>Added By</b></th>
             </tr>
 
-            <% availablefood.forEach(function(food){ %>
+            <% availablefoods.forEach(function(food){ %>
             <tr>
                 <td><%= food.name %></td>
                 <td><%= food.typicalValues%> <%= food.unitTypicalValues %></td>

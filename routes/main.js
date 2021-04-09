@@ -200,21 +200,27 @@ app.get('/login', function (req,res){
 
 //R8--------UPDATE-FOOD---------------------------------------------------------------------------------------// 
 
-//R9--------LIST---------------------------------------------------------------------------------------//
-app.get('/listfood', redirectLogin, function(req, res) {
-        var MongoClient = require('mongodb').MongoClient;
+//R9--------LIST-FOOD----------------------------------------------------------------------------------------//
+	app.get('/listfood', redirectLogin, function(req, res) { 
+        var MongoClient = require('mongodb').MongoClient;	// MongoDB module is required here
         var url = 'mongodb://localhost';
-        MongoClient.connect(url, function (err, client) {
-        	if (err) throw err;      
-        		var db = client.db('caloriebuddy');
-        		db.collection('foods').find().toArray((findErr, results) => {
-        		if (findErr) throw findErr;
-        		else 
-            			res.render('listfood.ejs', {availablefoods:results});
-        			client.close();  
-        		}); 
-      		}); 
-    	});
+        MongoClient.connect(url, function (err, client) {	// MongoDB client is initiated through a function
+                if (err) throw err;	// line of code that will catch and display an error message if something does not go as expected
+                        var db = client.db('caloriebuddy');
+                        db.collection('foods').find().toArray((findErr, results) => {	//retrieve all foods in database under colletion "foods"
+                        if (findErr) throw findErr;	// line of code that will catch and display an error message if something does not go as expected
+                        else{
+				if (results.length == 0){	// if database empty, then show the following message
+					res.send('There are no foods records in the database.' + '<br />'+'<a href='+'./'+'>Home</a>');
+				} else {	// if the database is not empty, render listfood page with the result which will display a list of foods
+	                                res.render('listfood.ejs', {availablefoods:results});	// render the result in a list
+        	                        client.close();	// MongoDB is closed                                    
+				}
+			}
+                        });
+                });
+        });
+
 
 //R10-----API---------------------------------------------------------------------------------------// 
 	app.get('/api', function (req,res) {

@@ -115,7 +115,7 @@ app.get('/login', function (req,res){
 		if (err) {        
 			return res.redirect('./')      
 		}
-		res.send('You are now logged out ' + req.body.username + '.' + '<br />'+ '<br/ >' + '<a href='+'./'+'>Home</a>');      
+		res.send('You are now logged out.' + '<br />'+ '<br/ >' + '<a href='+'./'+'>Home</a>');      
 		})    
 	})
 
@@ -314,12 +314,4 @@ app.get('/login', function (req,res){
 			}); 
 		}); 
 	});
-
-
-
-
-
-
-
-
 }

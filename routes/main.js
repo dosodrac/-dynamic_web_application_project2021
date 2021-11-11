@@ -20,21 +20,22 @@ module.exports = function(app)
 
 //R3--------REGISTRATION---------------------------------------------------------------------------------------//
 
-app.get('/register', function (req,res){	// function that will request and resend data from register
-		 res.render('register.html');	// render the register page itself
+app.get('/register', function (req,res){				// function that will request and resend data from register
+		 res.render('register.html');				// render the register page itself
 	});
 	app.post('/registered',
-		[check('username').isAlphanumeric().isLength({ min:3, max:20})],	// Validation of username input, through the use of alpha numeric characters between 3 and 20 and trimmed of white spaces
-		[check('email').normalizeEmail().isEmail()],	// Validation of email input, check if string is an email and canonicalizes it
-		[check('password').isLength({min:8, max:20})],	// Validation of password input, with the minimum lenght of 8 and maximum of 20 characters
-		[check('firstname').isAlpha().isLength({max:20})],  // Validation of first name input as being only a maximum of 20 letters
-		[check('lasttname').isAlpha().isLength({max:20})],  // Validation of last name input as being only a maximum of 20 letters
-
-		function (req,res) {     // function that will request and resend data from registered
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-	            res.redirect('./register'); 
-		} else { 
+		[check('username').isAlphanumeric().trim().isLength({ min:3, max:20}),		// Validation of username input, through the use of alpha numeric characters between 3 and 20 and trimmed of white spaces
+		check('email').normalizeEmail().isEmail(),		// Validation of email input, check if string is an email,removes white space canonicalizes it
+		check('password').isLength({min:8, max:20}),		// Validation of password input, with the minimum lenght of 8 and maximum of 20 characters
+		check('firstname').isLength({max:20}),	// Validation of first name input as being only a maximum of 20 characters
+		check('lasttname').isLength({max:20})],	// Validation of last name input as being only a maximum of 20 characters
+		function (req,res) {     				// function that will request and resend data from registered
+			const errors = validationResult(req);
+			if (!errors.isEmpty()) {
+				res.send('Something went wrong.' + '<br/>' + 'Please try again ' + '<a href='+'./register'+'>here</a>'+'.');
+	            		//res.redirect('./register'); 
+				//res.send(errors);
+			} else { 
 		//saving data in database         
 		var MongoClient = require('mongodb').MongoClient;	// MongoDB module required
 		var url = 'mongodb://localhost';
@@ -170,7 +171,7 @@ app.get('/login', function (req,res){
 
 //R7--------SEARCH-FOOD---------------------------------------------------------------------------------------// 
 
-	app.get('/searchfood', redirectLogin,function(req,res){
+	app.get('/searchfood', function(req,res){
                 res.render("searchfood.html");
         });
         //result of search
@@ -277,7 +278,7 @@ app.get('/login', function (req,res){
 
 
 //R9--------LIST-FOOD----------------------------------------------------------------------------------------//
-	app.get('/listfood', redirectLogin, function(req, res) { 
+	app.get('/listfood', function(req, res) { 
         var MongoClient = require('mongodb').MongoClient;	// MongoDB module is required here
         var url = 'mongodb://localhost';
         MongoClient.connect(url, function (err, client) {	// MongoDB client is initiated through a function

@@ -163,14 +163,15 @@
 
 		.addfoodcontainer{
 		position: absolute; 
-		top: 225px;
+		top: 185px;
 		right: 250px;
 		width: 350px;
 		clear: both;
 		height: 400px;
 		text-color: white;
 		background-color:rgba(255, 255, 255, 1);
-		padding: 5px 20px;
+		padding: 15px 20px;
+		border: 0 0 50px 0;	/*NEW LINE HERE*/
 		margin: 0 auto;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
